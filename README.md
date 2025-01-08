@@ -1,100 +1,12 @@
-# 2-Tier Application with Network Restrictions on Kubernetes
+# 💫 About Me:
+# 2-Tier Application with Network Restrictions on Kubernetes<br><br>This repository contains a basic 2-tier application (frontend and backend) running on Kubernetes. The frontend service interacts with the backend service. The project includes Kubernetes configuration files for deploying the services and applying network policies to restrict access between pods.<br><br>## Prerequisites<br><br>Before setting up the project, ensure the following tools are installed on your machine:<br><br>- **Minikube**: For running the local Kubernetes cluster.<br>- **kubectl**: Command-line tool for interacting with Kubernetes.<br>- **Docker**: For building and running the container images.<br><br>### Install Minikube<br>If you don't have Minikube installed, follow the [official installation guide](https://minikube.sigs.k8s.io/docs/).<br><br>### Install kubectl<br>Follow the instructions to install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).<br><br>### Install Docker<br>Ensure Docker is installed and running. Follow the installation guide [here](https://docs.docker.com/get-docker/).<br><br>## Setup Instructions<br><br>### 1. Start Minikube<br>Start a Minikube cluster with the necessary configuration:<br><br>```bash<br>minikube start --driver=docker --kubernetes-version=stable<br><br>### 2. Build Docker Images<br>Build the Docker images for the frontend and backend services.<br><br>Backend Image:<br><br>Navigate to the backend folder and build the image:<br>docker build -t backend .<br>Frontend Image:<br><br>Navigate to the frontend folder and build the image:<br><br>bash<br>docker build -t frontend .<br><br>### 3. Push Docker Images to Docker Hub<br>If you want to push the images to Docker Hub, log in to your Docker account and push the images:<br><br>bash<br>docker login<br>docker tag backend your-dockerhub-username/backend<br>docker tag frontend your-dockerhub-username/frontend<br><br>docker push your-dockerhub-username/backend<br>docker push your-dockerhub-username/frontend<br><br>### 4. Apply Kubernetes Manifests<br>Apply the Kubernetes configuration files to deploy the backend and frontend services along with a network policy to restrict access.<br><br>bash<br>kubectl apply -f backend-deployment.yaml<br>kubectl apply -f frontend-deployment.yaml<br>kubectl apply -f backend-service.yaml<br>kubectl apply -f frontend-service.yaml<br>kubectl apply -f network-policy.yaml<br><br>### 5. Verify the Deployment<br>Check the status of the pods and services:<br><br>bash<br>kubectl get pods<br>kubectl get svc<br>Make sure the services are running, and the network policy has been applied correctly.<br><br>### 6. Access the Frontend<br>To access the frontend service, use the Minikube service command:<br><br>minikube service frontend-service<br>This will open the frontend application in your browser.<br><br>### Network Policy<br>The network policy applied ensures that the frontend can only communicate with the backend service and no other services within the Kubernetes cluster.<br><br>The frontend can access the backend service on port 5000.<br>No external access is allowed to the backend from other services or pods in the cluster.<br><br>### 7. Test Communication<br>You can test if the network policy is applied correctly by attempting to access the backend service from the frontend pod:<br><br>kubectl exec -it <frontend-pod-name> -- curl http://backend-service:5000<br>If the network policy is applied correctly, access should be allowed from the frontend to the backend but restricted from other sources.<br><br>### Cleanup<br>To delete the resources and stop Minikube:<br><br>kubectl delete -f backend-deployment.yaml<br>kubectl delete -f frontend-deployment.yaml<br>kubectl delete -f backend-service.yaml<br>kubectl delete -f frontend-service.yaml<br>kubectl delete -f network-policy.yaml<br><br>minikube stop<br>
 
-This repository contains a basic 2-tier application (frontend and backend) running on Kubernetes. The frontend service interacts with the backend service. The project includes Kubernetes configuration files for deploying the services and applying network policies to restrict access between pods.
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=gitsaravanesh&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=gitsaravanesh&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=gitsaravanesh&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
-## Prerequisites
+---
+[![](https://visitcount.itsvg.in/api?id=gitsaravanesh&icon=0&color=0)](https://visitcount.itsvg.in)
 
-Before setting up the project, ensure the following tools are installed on your machine:
-
-- **Minikube**: For running the local Kubernetes cluster.
-- **kubectl**: Command-line tool for interacting with Kubernetes.
-- **Docker**: For building and running the container images.
-
-### Install Minikube
-If you don't have Minikube installed, follow the [official installation guide](https://minikube.sigs.k8s.io/docs/).
-
-### Install kubectl
-Follow the instructions to install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-
-### Install Docker
-Ensure Docker is installed and running. Follow the installation guide [here](https://docs.docker.com/get-docker/).
-
-## Setup Instructions
-
-### 1. Start Minikube
-Start a Minikube cluster with the necessary configuration:
-
-```bash
-minikube start --driver=docker --kubernetes-version=stable
-
-### 2. Build Docker Images
-Build the Docker images for the frontend and backend services.
-
-Backend Image:
-
-Navigate to the backend folder and build the image:
-docker build -t backend .
-Frontend Image:
-
-Navigate to the frontend folder and build the image:
-
-bash
-docker build -t frontend .
-
-### 3. Push Docker Images to Docker Hub
-If you want to push the images to Docker Hub, log in to your Docker account and push the images:
-
-bash
-docker login
-docker tag backend your-dockerhub-username/backend
-docker tag frontend your-dockerhub-username/frontend
-
-docker push your-dockerhub-username/backend
-docker push your-dockerhub-username/frontend
-
-### 4. Apply Kubernetes Manifests
-Apply the Kubernetes configuration files to deploy the backend and frontend services along with a network policy to restrict access.
-
-bash
-kubectl apply -f backend-deployment.yaml
-kubectl apply -f frontend-deployment.yaml
-kubectl apply -f backend-service.yaml
-kubectl apply -f frontend-service.yaml
-kubectl apply -f network-policy.yaml
-
-### 5. Verify the Deployment
-Check the status of the pods and services:
-
-bash
-kubectl get pods
-kubectl get svc
-Make sure the services are running, and the network policy has been applied correctly.
-
-### 6. Access the Frontend
-To access the frontend service, use the Minikube service command:
-
-minikube service frontend-service
-This will open the frontend application in your browser.
-
-### Network Policy
-The network policy applied ensures that the frontend can only communicate with the backend service and no other services within the Kubernetes cluster.
-
-The frontend can access the backend service on port 5000.
-No external access is allowed to the backend from other services or pods in the cluster.
-
-### 7. Test Communication
-You can test if the network policy is applied correctly by attempting to access the backend service from the frontend pod:
-
-kubectl exec -it <frontend-pod-name> -- curl http://backend-service:5000
-If the network policy is applied correctly, access should be allowed from the frontend to the backend but restricted from other sources.
-
-### Cleanup
-To delete the resources and stop Minikube:
-
-kubectl delete -f backend-deployment.yaml
-kubectl delete -f frontend-deployment.yaml
-kubectl delete -f backend-service.yaml
-kubectl delete -f frontend-service.yaml
-kubectl delete -f network-policy.yaml
-
-minikube stop
+<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
