@@ -45,46 +45,46 @@ docker build -t frontend .
 
 If you want to push the images to Docker Hub, log in to your Docker account and push the images:
 
-docker login
-docker tag backend your-dockerhub-username/backend
-docker tag frontend your-dockerhub-username/frontend
+docker login  
+docker tag backend your-dockerhub-username/backend  
+docker tag frontend your-dockerhub-username/frontend  
 
-docker push your-dockerhub-username/backend
-docker push your-dockerhub-username/frontend
+docker push your-dockerhub-username/backend  
+docker push your-dockerhub-username/frontend  
 
 ### 4. Apply Kubernetes Manifests
 
 Apply the Kubernetes configuration files to deploy the backend and frontend services along with a network policy to restrict access.
 
-kubectl apply -f backend-deployment.yaml
-kubectl apply -f frontend-deployment.yaml
-kubectl apply -f backend-service.yaml
-kubectl apply -f frontend-service.yaml
-kubectl apply -f network-policy.yaml
+kubectl apply -f backend-deployment.yaml  
+kubectl apply -f frontend-deployment.yaml  
+kubectl apply -f backend-service.yaml  
+kubectl apply -f frontend-service.yaml  
+kubectl apply -f network-policy.yaml  
 
 ### 5. Verify the Deployment
 Check the status of the pods and services:
  
-kubectl get pods
-kubectl get svc
-Make sure the services are running, and the network policy has been applied correctly.
+kubectl get pods  
+kubectl get svc  
+Make sure the services are running, and the network policy has been applied correctly.  
 
 ### 6. Access the Frontend
-To access the frontend service, use the Minikube service command:
+To access the frontend service, use the Minikube service command:  
  
-minikube service frontend-service
+minikube service frontend-service  
 
-This will open the frontend application in your browser.
+This will open the frontend application in your browser.  
 
-Network Policy: The network policy applied ensures that the frontend can only communicate with the backend service and no other services within the Kubernetes cluster.
+Network Policy: The network policy applied ensures that the frontend can only communicate with the backend service and no other services within the Kubernetes cluster.  
 The frontend can access the backend service on port 5000. No external access is allowed to the backend from other services or pods in the cluster.
 
 ### 7. Test Communication
-You can test if the network policy is applied correctly by attempting to access the backend service from the frontend pod:
+You can test if the network policy is applied correctly by attempting to access the backend service from the frontend pod:  
  
-kubectl exec -it <frontend-pod-name> -- curl http://backend-service:5000
+kubectl exec -it <frontend-pod-name> -- curl http://backend-service:5000  
 
-If the network policy is applied correctly, access should be allowed from the frontend to the backend but restricted from other sources.
+If the network policy is applied correctly, access should be allowed from the frontend to the backend but restricted from other sources.  
 
 ### 8. Cleanup
 To delete the resources and stop Minikube:
