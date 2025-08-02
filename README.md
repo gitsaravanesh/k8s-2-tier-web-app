@@ -9,7 +9,8 @@ Before setting up the project, ensure the following tools are installed on your 
 - **Minikube**: For running the local Kubernetes cluster.
 - **kubectl**: Command-line tool for interacting with Kubernetes.
 - **Docker**: For building and running the container images.
-
+- **Other Depedencies**: curl wget apt-transport-https ca-certificates git socat conntrack
+ 
 ### Install Minikube
 If you don't have Minikube installed, follow the [official installation guide](https://minikube.sigs.k8s.io/docs/).
 
@@ -72,7 +73,7 @@ Make sure the services are running, and the network policy has been applied corr
 ### 6. Access the Frontend
 To access the frontend service, use the Minikube service command:  
  
-minikube service frontend-service  
+minikube service frontend-service --url
 
 This will open the frontend application in your browser.  
 
