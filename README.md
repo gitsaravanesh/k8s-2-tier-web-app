@@ -6,6 +6,7 @@ This repository contains a basic 2-tier application (frontend and backend) runni
 
 Before setting up the project, ensure the following tools are installed on your machine:
 
+- **EC2**: Launch t2.large Ubuntu 22.04 instance
 - **Minikube**: For running the local Kubernetes cluster.
 - **kubectl**: Command-line tool for interacting with Kubernetes.
 - **Docker**: For building and running the container images.
